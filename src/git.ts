@@ -8,8 +8,17 @@ export class Git {
     return this.execute('', ['--version']);
   }
 
-  static commit(message: string) {
-    return this.execute('commit', [`--message=${message}`, '--quiet', '--all']);
+  static async commit(message: string) {
+    const { stdout: hasStaged } = await this.execute('status', [
+      '--porcelain',
+      '--untracked-files=no'
+    ]);
+
+    if (!hasStaged) {
+      this.execute('add', [`--all`]);
+    }
+
+    this.execute('commit', [`--message=${message}`, '--quiet', '--all']);
   }
 
   private static execute(command?: string, options: string[] = []) {
