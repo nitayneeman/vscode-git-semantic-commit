@@ -1,17 +1,16 @@
-import * as execa from 'execa';
-
-const execute = (command: string, options: string[] = []): Promise<any> => {
-  return execa('git', [command, ...options]);
-};
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
 
 export class Git {
-  static async exists() {
-    try {
-      await execute('--version');
-    } catch {
-      return false;
-    }
+  static exists() {
+    return this.execute('--version');
+  }
 
-    return false;
+  static commit(message: string) {
+    return this.execute(`commit -m "${message}"`);
+  }
+
+  private static execute(command: string) {
+    return exec(`git ${command}`);
   }
 }
