@@ -5,7 +5,11 @@ import { Git } from '../git';
 export const registerCommands = async (context: ExtensionContext) => {
   let disposable = commands.registerCommand('gitSemanticCommitMessage.featCommit', async () => {
     try {
-      await Promise.all([Git.exists(), Git.commit('feat')]);
+      const [, message] = await Promise.all([Git.exists(), window.showInputBox()]);
+
+      if (message) {
+        await Git.commit(`feat: ${message}`);
+      }
     } catch ({ message }) {
       window.showErrorMessage(message);
     }

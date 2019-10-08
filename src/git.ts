@@ -18,7 +18,7 @@ export class Git {
       this.execute('add', [`--all`]);
     }
 
-    this.execute('commit', [`--message=${message}`, '--quiet', '--all']);
+    this.execute('commit', [`--message="${message}"`, '--quiet', '--all']);
   }
 
   private static execute(command?: string, options: string[] = []) {
