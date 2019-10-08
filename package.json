@@ -9,14 +9,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.helloWorld"
+    "onCommand:gitSemanticCommitMessage.featCommit"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "extension.helloWorld",
-        "title": "Hello World"
+        "command": "gitSemanticCommitMessage.featCommit",
+        "title": "Git: Commit a Feature"
       }
     ]
   },

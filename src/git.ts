@@ -1,3 +1,5 @@
+import { workspace } from 'vscode';
+
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
@@ -11,6 +13,8 @@ export class Git {
   }
 
   private static execute(command: string) {
-    return exec(`git ${command}`);
+    const { rootPath: cwd } = workspace;
+
+    return exec(`git ${command}`, { cwd });
   }
 }
