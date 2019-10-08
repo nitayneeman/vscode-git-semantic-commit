@@ -1,11 +1,9 @@
 import * as vscode from 'vscode';
 
-export function activate(context: vscode.ExtensionContext) {
-  let disposable = vscode.commands.registerCommand('extension.helloWorld', () => {
-    vscode.window.showInformationMessage('Hello World!');
-  });
+import { registerCommands } from './commands/index';
 
-  context.subscriptions.push(disposable);
+export function activate(context: vscode.ExtensionContext) {
+  registerCommands(context);
 }
 
 export function deactivate() {}
