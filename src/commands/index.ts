@@ -1,5 +1,6 @@
 import { commands, window, ExtensionContext } from 'vscode';
 
+import { Configuration, Properties } from '../config';
 import { Git } from '../git';
 
 export const registerCommands = async (context: ExtensionContext) => {
@@ -8,7 +9,7 @@ export const registerCommands = async (context: ExtensionContext) => {
       const [, message] = await Promise.all([Git.exists(), window.showInputBox()]);
 
       if (message) {
-        await Git.commit(`feat: ${message}`);
+        await Git.commit(`${Configuration[Properties.customFeatCommit]}: ${message}`);
       }
     } catch ({ message }) {
       window.showErrorMessage(message);

@@ -18,7 +18,18 @@
         "command": "gitSemanticCommitMessage.featCommit",
         "title": "Git: Commit a Feature"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Git - Semantic Commit Message",
+      "properties": {
+        "gitSemanticCommitMessage.customFeatCommit": {
+          "type": "string",
+          "default": "feat",
+          "description": "Change the default feat prefix"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
