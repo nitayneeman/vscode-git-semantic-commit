@@ -5,7 +5,7 @@ import { extensionIdentifier } from './constants';
 const Configuration = workspace.getConfiguration(extensionIdentifier);
 
 enum ConfigurationProperties {
-  customFeatCommit = 'customFeatCommit'
+  types = 'types'
 }
 
 export { Configuration, ConfigurationProperties };

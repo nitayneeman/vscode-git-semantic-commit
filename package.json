@@ -23,22 +23,19 @@
       "type": "object",
       "title": "Git - Semantic Commit Message",
       "properties": {
-        "gitSemanticCommitMessage.customFeatCommit": {
-          "type": "string",
-          "default": "feat",
-          "description": "Change the default feat prefix"
-        },
-        "gitSemanticCommitMessage.blame.customFeatCommit": {
+        "gitSemanticCommitMessage.types": {
           "type": "array",
           "default": [
-            "feat"
+            "feat",
+            "fix",
+            "chore"
           ],
           "items": {
             "type": "string"
           },
           "minItems": 1,
           "uniqueItems": true,
-          "markdownDescription": "Specifies where the associated line highlights will be shown"
+          "markdownDescription": "Specifies the supported message types"
         }
       }
     }

@@ -1,7 +1,7 @@
 import { commands, window, Disposable, ExtensionContext } from 'vscode';
 
-import { extensionIdentifier } from './constants';
 import { Configuration, ConfigurationProperties } from './config';
+import { extensionIdentifier } from './constants';
 import { Git } from './git';
 
 enum Commands {
@@ -13,12 +13,13 @@ const enum ActionType {
   subject = 'subject'
 }
 
+const types = [...Configuration[ConfigurationProperties.types]];
+
 const disposables: Disposable[] = [
   commands.registerCommand(`${extensionIdentifier}.${Commands.featCommit}`, async () => {
     try {
       await Git.exists();
 
-      const types = ['feat', 'fix', 'chore'];
       const quickPick = window.createQuickPick();
       const quickPickItems = types.map(type => ({
         label: `$(git-commit) Commit "${type}" type`,
