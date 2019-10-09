@@ -8,16 +8,74 @@ enum Commands {
   featCommit = 'featCommit'
 }
 
+const enum ActionType {
+  scope = 'scope',
+  subject = 'subject'
+}
+
 const disposables: Disposable[] = [
   commands.registerCommand(`${extensionIdentifier}.${Commands.featCommit}`, async () => {
     try {
-      const [, subject] = await Promise.all([Git.exists(), window.showInputBox()]);
+      await Git.exists();
 
-      if (subject) {
-        const type = Configuration[ConfigurationProperties.customFeatCommit];
+      const types = ['feat', 'fix', 'chore'];
+      const quickPick = window.createQuickPick();
+      const quickPickItems = types.map(type => ({
+        label: `$(git-commit) Commit "${type}" type`,
+        alwaysShow: true,
+        actionType: ActionType.subject,
+        type
+      }));
 
-        await Git.commit(`${type}: ${subject}`);
-      }
+      let scope: string;
+
+      quickPick.items = [
+        {
+          label: `$(gist-new) Add a message scope`,
+          alwaysShow: true,
+          actionType: ActionType.scope,
+          type: ''
+        },
+        ...quickPickItems
+      ];
+      quickPick.placeholder = 'Type a value (scope or subject)';
+      quickPick.ignoreFocusOut = true;
+
+      quickPick.show();
+
+      quickPick.onDidChangeSelection(async (items: any) => {
+        const [{ actionType }] = items;
+
+        quickPick.hide();
+
+        if (actionType === ActionType.scope) {
+          scope = quickPick.value;
+
+          quickPick.value = '';
+          quickPick.items = [
+            {
+              label: `$(gist-new) Change the message scope (current: "${scope}")`,
+              alwaysShow: true,
+              actionType: ActionType.scope,
+              type: ''
+            },
+            ...quickPickItems
+          ];
+          quickPick.placeholder = 'Type a value (scope or subject)';
+          quickPick.ignoreFocusOut = true;
+
+          quickPick.show();
+        } else {
+          const [{ type }] = items;
+          const subject = quickPick.value;
+
+          scope = scope ? `(${scope})` : '';
+          const commitMessage = `${type}${scope}: ${subject}`;
+
+          await Git.commit(commitMessage);
+          window.showInformationMessage(commitMessage);
+        }
+      });
     } catch ({ message }) {
       window.showErrorMessage(message);
     }

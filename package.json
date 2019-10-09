@@ -27,6 +27,18 @@
           "type": "string",
           "default": "feat",
           "description": "Change the default feat prefix"
+        },
+        "gitSemanticCommitMessage.blame.customFeatCommit": {
+          "type": "array",
+          "default": [
+            "feat"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "markdownDescription": "Specifies where the associated line highlights will be shown"
         }
       }
     }
