@@ -13,12 +13,6 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "gitSemanticCommitMessage.semanticCommit",
-        "title": "Git: Semantic Commit"
-      }
-    ],
     "configuration": {
       "type": "object",
       "title": "Git - Semantic Commit Message",
@@ -38,6 +32,26 @@
           "markdownDescription": "Specifies the supported message types"
         }
       }
+    },
+    "commands": [
+      {
+        "command": "gitSemanticCommitMessage.semanticCommit",
+        "title": "Git: Semantic Commit",
+        "icon": {
+          "dark": "images/navigation/dark-icon.svg",
+          "light": "images/navigation/light-icon.svg"
+        }
+      }
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "when": "scmProvider == git",
+          "command": "gitSemanticCommitMessage.semanticCommit",
+          "alt": "gitSemanticCommitMessage.semanticCommit",
+          "group": "navigation"
+        }
+      ]
     }
   },
   "scripts": {
