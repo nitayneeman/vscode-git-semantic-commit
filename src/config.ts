@@ -1,9 +1,11 @@
 import { workspace } from 'vscode';
 
-enum Properties {
+import { extensionIdentifier } from './constants';
+
+const Configuration = workspace.getConfiguration(extensionIdentifier);
+
+enum ConfigurationProperties {
   customFeatCommit = 'customFeatCommit'
 }
 
-const Configuration = workspace.getConfiguration('gitSemanticCommitMessage');
-
-export { Configuration, Properties };
+export { Configuration, ConfigurationProperties };
