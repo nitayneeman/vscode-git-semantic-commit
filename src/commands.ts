@@ -4,15 +4,20 @@ import { extensionIdentifier } from './constants';
 import { Configuration, ConfigurationProperties } from './config';
 import { Git } from './git';
 
-const disposables: Disposable[] = [
-  commands.registerCommand(`${extensionIdentifier}.featCommit`, async () => {
-    try {
-      const [, message] = await Promise.all([Git.exists(), window.showInputBox()]);
+enum Commands {
+  featCommit = 'featCommit'
+}
 
-      if (message) {
-        await Git.commit(`${Configuration[ConfigurationProperties.customFeatCommit]}: ${message}`);
+const disposables: Disposable[] = [
+  commands.registerCommand(`${extensionIdentifier}.${Commands.featCommit}`, async () => {
+    try {
+      const [, subject] = await Promise.all([Git.exists(), window.showInputBox()]);
+
+      if (subject) {
+        const type = Configuration[ConfigurationProperties.customFeatCommit];
+
+        await Git.commit(`${type}: ${subject}`);
       }
-      await window.createQuickPick();
     } catch ({ message }) {
       window.showErrorMessage(message);
     }
