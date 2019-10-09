@@ -5,7 +5,7 @@ import { extensionIdentifier } from './constants';
 import { Git } from './git';
 
 enum Commands {
-  featCommit = 'featCommit'
+  semanticCommit = 'semanticCommit'
 }
 
 const enum ActionType {
@@ -16,7 +16,7 @@ const enum ActionType {
 const types = [...Configuration[ConfigurationProperties.types]];
 
 const disposables: Disposable[] = [
-  commands.registerCommand(`${extensionIdentifier}.${Commands.featCommit}`, async () => {
+  commands.registerCommand(`${extensionIdentifier}.${Commands.semanticCommit}`, async () => {
     try {
       await Git.exists();
 

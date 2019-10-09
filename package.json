@@ -9,14 +9,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:gitSemanticCommitMessage.featCommit"
+    "onCommand:gitSemanticCommitMessage.semanticCommit"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "gitSemanticCommitMessage.featCommit",
-        "title": "Git: Commit a Feature"
+        "command": "gitSemanticCommitMessage.semanticCommit",
+        "title": "Git: Semantic Commit"
       }
     ],
     "configuration": {
