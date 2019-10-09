@@ -1,6 +1,6 @@
-import { commands, window, Disposable, ExtensionContext } from 'vscode';
+import { commands, window, workspace, Disposable, ExtensionContext } from 'vscode';
 
-import { Configuration, ConfigurationProperties } from './config';
+import { getConfiguration, ConfigurationProperties } from './config';
 import { extensionIdentifier } from './constants';
 import { Git } from './git';
 
@@ -13,7 +13,11 @@ const enum ActionType {
   subject = 'subject'
 }
 
-const types = [...Configuration[ConfigurationProperties.types]];
+let types = [...getConfiguration()[ConfigurationProperties.types]];
+
+workspace.onDidChangeConfiguration(() => {
+  types = [...getConfiguration()[ConfigurationProperties.types]];
+});
 
 const disposables: Disposable[] = [
   commands.registerCommand(`${extensionIdentifier}.${Commands.semanticCommit}`, async () => {
