@@ -3,3 +3,5 @@ abstract class Command {
 
   abstract async execute(): Promise<void>;
 }
+
+export { Command };
