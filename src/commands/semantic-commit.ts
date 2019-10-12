@@ -10,18 +10,20 @@ const enum ActionType {
   subject = 'subject'
 }
 
+const scopeStorageKey = `${workspaceStorageKey}:scope`;
+
 export class SemanticCommitCommand extends Command {
   identifier = 'semanticCommit';
 
+  context: ExtensionContext;
   scope: string;
-
   types: string[];
 
   constructor(context: ExtensionContext) {
     super();
 
-    this.scope = context.workspaceState.get(`${workspaceStorageKey}:scope`, '');
-
+    this.context = context;
+    this.scope = this.context.workspaceState.get(scopeStorageKey, '');
     this.types = this.getTypes();
 
     workspace.onDidChangeConfiguration(() => {
@@ -32,22 +34,7 @@ export class SemanticCommitCommand extends Command {
   async execute() {
     await Git.exists();
 
-    const quickPickItems = this.types.map(type => ({
-      label: `$(git-commit) Commit "${type}" type`,
-      alwaysShow: true,
-      actionType: ActionType.subject,
-      type
-    }));
-
-    const quickPick = this.createQuickPick([
-      {
-        label: `$(gist-new) Add a message scope`,
-        alwaysShow: true,
-        actionType: ActionType.scope,
-        type: ''
-      },
-      ...quickPickItems
-    ]);
+    const quickPick = this.createQuickPick(this.createQuickPickItems());
 
     quickPick.show();
 
@@ -58,30 +45,26 @@ export class SemanticCommitCommand extends Command {
 
       if (actionType === ActionType.scope) {
         this.scope = quickPick.value;
+        this.context.workspaceState.update(scopeStorageKey, this.scope);
 
         quickPick.value = '';
-        quickPick.items = [
-          {
-            label: `$(gist-new) Change the message scope (current: "${this.scope}")`,
-            alwaysShow: true,
-            actionType: ActionType.scope,
-            type: ''
-          },
-          ...quickPickItems
-        ];
+        quickPick.items = this.createQuickPickItems();
 
         quickPick.show();
       } else {
         const [{ type }] = items;
         const subject = quickPick.value;
 
-        this.scope = this.scope ? `(${this.scope})` : '';
-        const commitMessage = `${type}${this.scope}: ${subject}`;
+        const commitMessage = `${type}${this.hasScope() ? `(${this.scope})` : ''}: ${subject}`;
 
         await Git.commit(commitMessage);
         window.showInformationMessage(commitMessage);
       }
     });
+  }
+
+  private hasScope() {
+    return this.scope.length > 0;
   }
 
   private getTypes() {
@@ -96,5 +79,26 @@ export class SemanticCommitCommand extends Command {
     quickPick.ignoreFocusOut = true;
 
     return quickPick;
+  }
+
+  private createQuickPickItems(): QuickPickItem[] {
+    const typeItems = this.types.map(type => ({
+      label: `$(git-commit) Commit "${type}" type`,
+      alwaysShow: true,
+      actionType: ActionType.subject,
+      type
+    }));
+
+    return [
+      {
+        label: this.hasScope()
+          ? `$(gist-new) Change the message scope (current: "${this.scope}")`
+          : `$(gist-new) Add a message scope`,
+        alwaysShow: true,
+        actionType: ActionType.scope,
+        type: ''
+      },
+      ...typeItems
+    ];
   }
 }
