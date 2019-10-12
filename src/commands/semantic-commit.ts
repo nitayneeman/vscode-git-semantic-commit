@@ -9,7 +9,7 @@ const enum ActionType {
   subject = 'subject'
 }
 
-const getTypes = () => [...getConfiguration()[ConfigurationProperties.types]];
+const getTypes = () => [...getConfiguration()[ConfigurationProperties.types].sort()];
 
 export class SemanticCommitCommand extends Command {
   identifier = 'semanticCommit';

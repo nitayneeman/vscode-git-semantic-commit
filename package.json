@@ -20,9 +20,9 @@
         "gitSemanticCommitMessage.types": {
           "type": "array",
           "default": [
+            "chore",
             "feat",
-            "fix",
-            "chore"
+            "fix"
           ],
           "items": {
             "type": "string"
