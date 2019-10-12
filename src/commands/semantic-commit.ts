@@ -11,7 +11,7 @@ const enum ActionType {
 
 const getTypes = () => [...getConfiguration()[ConfigurationProperties.types]];
 
-class SemanticCommitCommand extends Command {
+export class SemanticCommitCommand extends Command {
   identifier = 'semanticCommit';
 
   types = getTypes();
