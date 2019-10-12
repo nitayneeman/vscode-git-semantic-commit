@@ -1,8 +1,8 @@
 import { commands, window, workspace, Disposable, ExtensionContext } from 'vscode';
 
-import { getConfiguration, ConfigurationProperties } from './config';
-import { extensionIdentifier } from './constants';
-import { Git } from './git';
+import { getConfiguration, ConfigurationProperties } from '../config';
+import { extensionIdentifier } from '../constants';
+import { Git } from '../git';
 
 enum Commands {
   semanticCommit = 'semanticCommit'

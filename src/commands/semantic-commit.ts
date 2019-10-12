@@ -27,7 +27,6 @@ class SemanticCommitCommand extends Command {
   async execute() {
     await Git.exists();
 
-    const quickPick = window.createQuickPick();
     const quickPickItems = this.types.map(type => ({
       label: `$(git-commit) Commit "${type}" type`,
       alwaysShow: true,
@@ -37,7 +36,7 @@ class SemanticCommitCommand extends Command {
 
     let scope: string;
 
-    quickPick.items = [
+    const quickPick = this.createQuickPick([
       {
         label: `$(gist-new) Add a message scope`,
         alwaysShow: true,
@@ -45,9 +44,7 @@ class SemanticCommitCommand extends Command {
         type: ''
       },
       ...quickPickItems
-    ];
-    quickPick.placeholder = 'Type a value (scope or subject)';
-    quickPick.ignoreFocusOut = true;
+    ]);
 
     quickPick.show();
 
@@ -69,8 +66,6 @@ class SemanticCommitCommand extends Command {
           },
           ...quickPickItems
         ];
-        quickPick.placeholder = 'Type a value (scope or subject)';
-        quickPick.ignoreFocusOut = true;
 
         quickPick.show();
       } else {
@@ -84,5 +79,15 @@ class SemanticCommitCommand extends Command {
         window.showInformationMessage(commitMessage);
       }
     });
+  }
+
+  private createQuickPick(items: any[]) {
+    const quickPick = window.createQuickPick();
+
+    quickPick.items = [...items];
+    quickPick.placeholder = 'Type a value (scope or subject)';
+    quickPick.ignoreFocusOut = true;
+
+    return quickPick;
   }
 }
