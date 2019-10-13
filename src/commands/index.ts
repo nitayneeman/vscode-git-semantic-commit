@@ -12,6 +12,7 @@ const createDisposables = (context: ExtensionContext): Disposable[] => {
     return commands.registerCommand(`${extensionIdentifier}.${command.identifier}`, async () => {
       try {
         await command.execute();
+        await command.postExecute();
       } catch ({ message }) {
         window.showErrorMessage(message);
       }

@@ -5,6 +5,7 @@ import { extensionIdentifier } from './constants';
 const getConfiguration = () => workspace.getConfiguration(extensionIdentifier);
 
 enum ConfigurationProperties {
+  preserveScope = 'preserveScope',
   types = 'types'
 }
 

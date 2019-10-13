@@ -17,6 +17,11 @@
       "type": "object",
       "title": "Git - Semantic Commit Message",
       "properties": {
+        "gitSemanticCommitMessage.preserveScope": {
+          "type": "boolean",
+          "default": "true",
+          "markdownDescription": "Determines whether to preserve the last message scope"
+        },
         "gitSemanticCommitMessage.types": {
           "type": "array",
           "default": [
