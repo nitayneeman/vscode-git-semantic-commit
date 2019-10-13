@@ -103,7 +103,7 @@ export class SemanticCommitCommand extends Command {
 
   private createQuickPickItems(): QuickPickItem[] {
     const typeItems = this.types.map(type => ({
-      label: `$(git-commit) Commit "${type}" type`,
+      label: `$(git-commit) Commit with "${type}" type`,
       alwaysShow: true,
       actionType: ActionType.subject,
       type

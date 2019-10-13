@@ -36,8 +36,12 @@
           "type": "array",
           "default": [
             "chore",
+            "docs",
             "feat",
-            "fix"
+            "fix",
+            "refactor",
+            "style",
+            "test"
           ],
           "items": {
             "type": "string"
