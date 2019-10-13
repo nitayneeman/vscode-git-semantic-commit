@@ -22,6 +22,11 @@
           "default": "false",
           "markdownDescription": "Determines whether to preserve the last message scope"
         },
+        "gitSemanticCommitMessage.stageAll": {
+          "type": "boolean",
+          "default": "true",
+          "markdownDescription": "Determines whether to stage all changes before the commit, in case the staging area (index) is empty"
+        },
         "gitSemanticCommitMessage.types": {
           "type": "array",
           "default": [

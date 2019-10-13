@@ -6,6 +6,7 @@ const getConfiguration = () => workspace.getConfiguration(extensionIdentifier);
 
 enum ConfigurationProperties {
   preserveScope = 'preserveScope',
+  stageAll = 'stageAll',
   types = 'types'
 }
 
