@@ -23,15 +23,11 @@ export class SemanticCommitCommand extends Command {
     super();
 
     this.context = context;
-    this.scope = this.isPreserveScopeEnabled()
-      ? this.context.workspaceState.get(scopeStorageKey, '')
-      : '';
+    this.scope = this.getScope();
     this.types = this.getTypes();
 
     workspace.onDidChangeConfiguration(() => {
-      this.scope = this.isPreserveScopeEnabled()
-        ? this.context.workspaceState.get(scopeStorageKey, '')
-        : '';
+      this.scope = this.getScope();
       this.types = this.getTypes();
     });
   }
@@ -85,6 +81,12 @@ export class SemanticCommitCommand extends Command {
 
   private hasScope() {
     return this.scope.length > 0;
+  }
+
+  private getScope() {
+    return this.isPreserveScopeEnabled()
+      ? this.context.workspaceState.get(scopeStorageKey, '')
+      : '';
   }
 
   private getTypes() {
