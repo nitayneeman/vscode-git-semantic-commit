@@ -59,11 +59,16 @@ export class SemanticCommitCommand extends Command {
       } else {
         const [{ type }] = items;
         const subject = quickPick.value;
-        const commitMessage = `${type}${this.hasScope() ? `(${this.scope})` : ''}: ${subject}`;
 
-        await Git.commit(commitMessage);
+        if (subject.length > 0) {
+          const commitMessage = `${type}${this.hasScope() ? `(${this.scope})` : ''}: ${subject}`;
 
-        window.showInformationMessage(commitMessage);
+          await Git.commit(commitMessage);
+
+          window.showInformationMessage(commitMessage);
+        } else {
+          window.showErrorMessage('The message subject cannot be empty!');
+        }
       }
     });
   }
