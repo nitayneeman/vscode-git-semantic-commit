@@ -24,7 +24,8 @@ export class Git {
   }
 
   private static execute(command?: string, options: string[] = []) {
-    const { rootPath: cwd } = workspace;
+    const { workspaceFolders } = workspace;
+    const cwd = workspaceFolders ? workspaceFolders[0].uri.fsPath : '';
 
     return exec(`git ${command} ${options.join(' ')}`, { cwd });
   }
