@@ -8,7 +8,7 @@ export class Git {
     return this.execute('', ['--version']);
   }
 
-  static async commit(message: string) {
+  static async add() {
     const { stdout: hasStaged } = await this.execute('status', [
       '--porcelain',
       '--untracked-files=no'
@@ -17,7 +17,9 @@ export class Git {
     if (!hasStaged) {
       this.execute('add', [`--all`]);
     }
+  }
 
+  static async commit(message: string) {
     this.execute('commit', [`--message="${message}"`, '--quiet', '--all']);
   }
 

@@ -59,6 +59,7 @@ export class SemanticCommitCommand extends Command {
         if (subject.length > 0) {
           const commitMessage = `${type}${this.hasScope() ? `(${this.scope})` : ''}: ${subject}`;
 
+          await Git.add();
           await Git.commit(commitMessage);
 
           window.showInformationMessage(commitMessage);
