@@ -19,7 +19,7 @@
       "properties": {
         "gitSemanticCommitMessage.preserveScope": {
           "type": "boolean",
-          "default": "true",
+          "default": "false",
           "markdownDescription": "Determines whether to preserve the last message scope"
         },
         "gitSemanticCommitMessage.types": {
