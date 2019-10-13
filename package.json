@@ -17,6 +17,11 @@
       "type": "object",
       "title": "Git - Semantic Commit Message",
       "properties": {
+        "gitSemanticCommitMessage.commitOptions": {
+          "type": "string",
+          "default": "--quiet",
+          "markdownDescription": "Specifies which [arguments](https://git-scm.com/docs/git-commit#_options) to be passed when the commit is executed"
+        },
         "gitSemanticCommitMessage.preserveScope": {
           "type": "boolean",
           "default": "false",
@@ -39,7 +44,7 @@
           },
           "minItems": 1,
           "uniqueItems": true,
-          "markdownDescription": "Specifies the supported message types"
+          "markdownDescription": "Specifies which message types to be shown"
         }
       }
     },

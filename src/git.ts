@@ -19,8 +19,8 @@ export class Git {
     }
   }
 
-  static async commit(message: string) {
-    this.execute('commit', [`--message="${message}"`, '--quiet', '--all']);
+  static async commit(message: string, options: string[]) {
+    this.execute('commit', [`--message="${message}"`, ...options]);
   }
 
   private static execute(command?: string, options: string[] = []) {

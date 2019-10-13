@@ -63,7 +63,7 @@ export class SemanticCommitCommand extends Command {
             await Git.add();
           }
 
-          await Git.commit(commitMessage);
+          await Git.commit(commitMessage, this.getCommitOptions());
         } else {
           window.showErrorMessage('The message subject cannot be empty!');
         }
@@ -97,6 +97,10 @@ export class SemanticCommitCommand extends Command {
 
   private getTypes() {
     return [...getConfiguration()[ConfigurationProperties.types].sort()];
+  }
+
+  private getCommitOptions() {
+    return getConfiguration()[ConfigurationProperties.commitOptions].split(' ');
   }
 
   private createQuickPick(items: QuickPickItem[]) {
