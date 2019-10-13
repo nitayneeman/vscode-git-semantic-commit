@@ -39,10 +39,14 @@ export class SemanticCommitCommand extends Command {
 
     quickPick.show();
 
+    quickPick.onDidHide(() => {
+      if (!this.isPreserveScopeEnabled()) {
+        this.scope = '';
+      }
+    });
+
     quickPick.onDidChangeSelection(async (items: any) => {
       const [{ actionType }] = items;
-
-      quickPick.hide();
 
       if (actionType === ActionType.scope) {
         this.scope = quickPick.value;
@@ -50,8 +54,6 @@ export class SemanticCommitCommand extends Command {
 
         quickPick.value = '';
         quickPick.items = this.createQuickPickItems();
-
-        quickPick.show();
       } else {
         const [{ type }] = items;
         const subject = quickPick.value;
@@ -64,17 +66,13 @@ export class SemanticCommitCommand extends Command {
           }
 
           await Git.commit(commitMessage, this.getCommitOptions());
+
+          quickPick.hide();
         } else {
           window.showErrorMessage('The message subject cannot be empty!');
         }
       }
     });
-  }
-
-  async postExecute() {
-    if (!this.isPreserveScopeEnabled()) {
-      this.scope = '';
-    }
   }
 
   private isPreserveScopeEnabled() {
