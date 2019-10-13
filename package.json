@@ -55,7 +55,7 @@
     "commands": [
       {
         "command": "gitSemanticCommitMessage.semanticCommit",
-        "title": "Git: Semantic Commit",
+        "title": "Semantic Commit",
         "icon": {
           "dark": "images/navigation/dark-icon.svg",
           "light": "images/navigation/light-icon.svg"
@@ -67,8 +67,14 @@
         {
           "when": "scmProvider == git",
           "command": "gitSemanticCommitMessage.semanticCommit",
-          "alt": "gitSemanticCommitMessage.semanticCommit",
+          "title": "Semantic Commit",
           "group": "navigation"
+        },
+        {
+          "when": "scmProvider == git",
+          "command": "gitSemanticCommitMessage.semanticCommit",
+          "title": "Semantic Commit",
+          "group": "inline"
         }
       ]
     }
