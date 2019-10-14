@@ -127,10 +127,18 @@ export class SemanticCommitCommand extends Command {
       const message = `${type}${this.hasScope() ? `(${this.scope})` : ''}: ${subject}`;
 
       if (this.isStageAllEnabled()) {
-        await Git.add();
+        try {
+          await Git.add();
+        } catch ({ message }) {
+          window.showErrorMessage(message);
+        }
       }
 
-      await Git.commit(message, this.getCommitOptions());
+      try {
+        await Git.commit(message, this.getCommitOptions());
+      } catch ({ message }) {
+        window.showErrorMessage(message);
+      }
     } else {
       window.showErrorMessage('The message subject cannot be empty!');
     }
