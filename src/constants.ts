@@ -1,5 +1,5 @@
-const extensionIdentifier = 'gitSemanticCommitMessage';
+const extensionIdentifier = 'gitSemanticCommit';
 
-const workspaceStorageKey = 'gitSemanticCommitMessage';
+const workspaceStorageKey = 'gitSemanticCommit';
 
 export { extensionIdentifier, workspaceStorageKey };

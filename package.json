@@ -1,6 +1,6 @@
 {
-  "name": "git-semantic-commit-message",
-  "displayName": "Git - Semantic Commit Message",
+  "name": "git-semantic-commit",
+  "displayName": "Git - Semantic Commit",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.38.0"
@@ -9,7 +9,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:gitSemanticCommitMessage.semanticCommit"
+    "onCommand:gitSemanticCommit.semanticCommit"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -17,22 +17,22 @@
       "type": "object",
       "title": "Git - Semantic Commit Message",
       "properties": {
-        "gitSemanticCommitMessage.commitOptions": {
+        "gitSemanticCommit.commitOptions": {
           "type": "string",
           "default": "--quiet",
           "markdownDescription": "Specifies which [arguments](https://git-scm.com/docs/git-commit#_options) to be passed when the commit is executed."
         },
-        "gitSemanticCommitMessage.preserveScope": {
+        "gitSemanticCommit.preserveScope": {
           "type": "boolean",
           "default": "false",
           "markdownDescription": "Determines whether to preserve the last message scope that was inserted."
         },
-        "gitSemanticCommitMessage.stageAll": {
+        "gitSemanticCommit.stageAll": {
           "type": "boolean",
           "default": "true",
           "markdownDescription": "Determines whether to stage all changes before the commit, in case the staging area (index) is empty."
         },
-        "gitSemanticCommitMessage.types": {
+        "gitSemanticCommit.types": {
           "type": "array",
           "default": [
             "chore",
@@ -54,7 +54,7 @@
     },
     "commands": [
       {
-        "command": "gitSemanticCommitMessage.semanticCommit",
+        "command": "gitSemanticCommit.semanticCommit",
         "title": "Semantic Commit",
         "icon": {
           "dark": "images/navigation/dark-icon.svg",
@@ -66,13 +66,13 @@
       "scm/title": [
         {
           "when": "scmProvider == git",
-          "command": "gitSemanticCommitMessage.semanticCommit",
+          "command": "gitSemanticCommit.semanticCommit",
           "title": "Semantic Commit",
           "group": "navigation"
         },
         {
           "when": "scmProvider == git",
-          "command": "gitSemanticCommitMessage.semanticCommit",
+          "command": "gitSemanticCommit.semanticCommit",
           "title": "Semantic Commit",
           "group": "inline"
         }
