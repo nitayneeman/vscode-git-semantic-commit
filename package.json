@@ -24,12 +24,12 @@
         },
         "gitSemanticCommit.preserveScope": {
           "type": "boolean",
-          "default": "false",
+          "default": false,
           "markdownDescription": "Determines whether to preserve the last message scope that was inserted."
         },
         "gitSemanticCommit.stageAll": {
           "type": "boolean",
-          "default": "true",
+          "default": true,
           "markdownDescription": "Determines whether to stage all changes before the commit, in case the staging area (index) is empty."
         },
         "gitSemanticCommit.types": {
