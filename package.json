@@ -15,7 +15,7 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "Git - Semantic Commit Message",
+      "title": "Git - Semantic Commit",
       "properties": {
         "gitSemanticCommit.commitOptions": {
           "type": "string",
@@ -55,7 +55,7 @@
     "commands": [
       {
         "command": "gitSemanticCommit.semanticCommit",
-        "title": "Semantic Commit",
+        "title": "Git: Semantic Commit",
         "icon": {
           "dark": "images/navigation/dark-icon.svg",
           "light": "images/navigation/light-icon.svg"
@@ -67,13 +67,11 @@
         {
           "when": "scmProvider == git",
           "command": "gitSemanticCommit.semanticCommit",
-          "title": "Semantic Commit",
           "group": "navigation"
         },
         {
           "when": "scmProvider == git",
           "command": "gitSemanticCommit.semanticCommit",
-          "title": "Semantic Commit",
           "group": "inline"
         }
       ]
