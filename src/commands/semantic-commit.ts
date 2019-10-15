@@ -46,21 +46,23 @@ export class SemanticCommitCommand extends Command {
     });
 
     quickPick.onDidChangeSelection(async (items: any) => {
-      const [{ actionType }] = items;
+      if (items.length > 0) {
+        const [{ actionType }] = items;
 
-      if (actionType === ActionType.scope) {
-        this.scope = quickPick.value;
-        this.context.workspaceState.update(scopeStorageKey, this.scope);
+        if (actionType === ActionType.scope) {
+          this.scope = quickPick.value;
+          this.context.workspaceState.update(scopeStorageKey, this.scope);
 
-        quickPick.value = '';
-        quickPick.items = this.createQuickPickItems();
-      } else {
-        const [{ type }] = items;
-        const subject = quickPick.value;
+          quickPick.value = '';
+          quickPick.items = this.createQuickPickItems();
+        } else {
+          const [{ type }] = items;
+          const subject = quickPick.value;
 
-        await this.performCommit(type, subject);
+          await this.performCommit(type, subject);
 
-        quickPick.hide();
+          quickPick.hide();
+        }
       }
     });
   }
