@@ -1,7 +1,22 @@
 {
   "name": "git-semantic-commit",
-  "displayName": "Git - Semantic Commit",
   "version": "0.0.1",
+  "license": "MIT",
+  "author": "Nitay Neeman",
+  "homepage": "https://github.com/nitayneeman/vscode-git-semantic-commit",
+  "keywords": [
+    "Git",
+    "Semantic",
+    "Commit",
+    "Message"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nitayneeman/vscode-git-semantic-commit.git"
+  },
+  "bugs": "https://github.com/nitayneeman/vscode-git-semantic-commit/issues",
+  "displayName": "Git - Semantic Commit",
+  "publisher": "nitayneeman",
   "engines": {
     "vscode": "^1.38.0"
   },
