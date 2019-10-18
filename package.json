@@ -24,7 +24,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:gitSemanticCommit.semanticCommit"
+    "*"
   ],
   "main": "./out/extension.js",
   "contributes": {
