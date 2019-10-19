@@ -24,4 +24,24 @@ suite('Extension Test Suite', () => {
 
     assert.equal(message.includes(expectedMessage), true);
   });
+
+  test('should commit with a scope and "chore" type', async () => {
+    const sampleScope = 'scope';
+    const sampleSubject = 'add new file';
+    const expectedMessage = `chore(${sampleScope}): ${sampleSubject}`;
+
+    await createFile(directoryPath, 'Hello World');
+    await vscode.env.clipboard.writeText(sampleScope);
+    await vscode.commands.executeCommand('gitSemanticCommit.semanticCommit');
+    await vscode.commands.executeCommand('editor.action.clipboardPasteAction');
+    await vscode.commands.executeCommand('workbench.action.acceptSelectedQuickOpenItem');
+    await vscode.env.clipboard.writeText(sampleSubject);
+    await vscode.commands.executeCommand('editor.action.clipboardPasteAction');
+    await vscode.commands.executeCommand('workbench.action.quickOpenSelectNext');
+    await vscode.commands.executeCommand('workbench.action.acceptSelectedQuickOpenItem');
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    const { stdout: message } = await getLastMessage(directoryPath);
+
+    assert.equal(message.includes(expectedMessage), true);
+  });
 });
