@@ -14,6 +14,6 @@ export async function createGitDirectory() {
   return dirPath;
 }
 
-export async function removeGitDirectory(dirPath: string) {
+export async function removeDirectory(dirPath: string) {
   return fs.rmdirSync(dirPath);
 }
