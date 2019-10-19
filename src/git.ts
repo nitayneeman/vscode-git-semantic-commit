@@ -12,8 +12,12 @@ export class Git {
     return this.execute(cwd, 'init', ['--quiet']);
   }
 
+  static async status(cwd: string, options: string[] = []) {
+    return this.execute(cwd, 'status', [...options]);
+  }
+
   static async add() {
-    const { stdout: hasStaged } = await this.execute(this.getWorkspaceFolder(), 'status', [
+    const { stdout: hasStaged } = await this.status(this.getWorkspaceFolder(), [
       '--porcelain',
       '--untracked-files=no'
     ]);
