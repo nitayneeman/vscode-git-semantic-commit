@@ -1,11 +1,27 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
 
-suite('Extension Test Suite', () => {
-  vscode.window.showInformationMessage('Start all tests.');
+import { createFile, clearDirectory, getLastMessage } from './common';
 
-  test('Sample test', () => {
-    assert.equal(-1, [1, 2, 3].indexOf(5));
-    assert.equal(-1, [1, 2, 3].indexOf(0));
+suite('Extension Test Suite', () => {
+  const { workspaceFolders } = vscode.workspace;
+  const directoryPath = workspaceFolders ? workspaceFolders[0].uri.fsPath : '';
+
+  suiteTeardown(() => clearDirectory(directoryPath));
+
+  test('should commit with "chore" type', async () => {
+    const sampleSubject = 'add new file';
+    const expectedMessage = `chore: ${sampleSubject}`;
+
+    await createFile(directoryPath, 'Hello World');
+    await vscode.env.clipboard.writeText(sampleSubject);
+    await vscode.commands.executeCommand('gitSemanticCommit.semanticCommit');
+    await vscode.commands.executeCommand('editor.action.clipboardPasteAction');
+    await vscode.commands.executeCommand('workbench.action.quickOpenSelectNext');
+    await vscode.commands.executeCommand('workbench.action.acceptSelectedQuickOpenItem');
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    const { stdout: message } = await getLastMessage(directoryPath);
+
+    assert.equal(message.includes(expectedMessage), true);
   });
 });
