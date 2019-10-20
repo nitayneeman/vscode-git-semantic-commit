@@ -44,4 +44,12 @@ Open the Command Palette and start typing `Git: Semantic Commit`:
 
 Then, choose the appropriate command and follow the steps.
 
+### 2. View Actions
+
+Alternatively:
+
+<p align="center">
+  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/usage/view-actions.gif?raw=true" alt="Preview">
+</p>
+
 <br>
