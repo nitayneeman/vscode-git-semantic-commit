@@ -108,15 +108,14 @@
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
-    "@types/mocha": "^5.2.6",
-    "@types/node": "^10.12.21",
-    "@types/vscode": "^1.38.0",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.11.1",
+    "@types/vscode": "^1.39.0",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
-    "mocha": "^6.1.4",
-    "tslint": "^5.12.1",
-    "typescript": "^3.3.1",
+    "mocha": "^6.2.2",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4",
     "vscode-test": "^1.2.0"
-  },
-  "dependencies": {}
+  }
 }
