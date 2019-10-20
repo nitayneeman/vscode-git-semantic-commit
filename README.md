@@ -17,3 +17,13 @@
   <a href="https://github.com/nitayneeman/vscode-git-semantic-commit#-settings">Settings</a> ·
   <a href="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/CHANGELOG.md">CHANGELOG</a>
 </p>
+
+## ℹ️️ Description
+
+This Visual Studio Code extension enables to commit simply by the semantic message conventions.
+
+<p align="center">
+  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/preview.gif?raw=true" alt="Preview">
+</p>
+
+<br>
