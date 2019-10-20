@@ -53,3 +53,12 @@ Alternatively, you can use the primary and secondary actions within the Source C
 </p>
 
 <br>
+
+The extension allows you to customize the following configuration settings:
+
+| Name                              | Description                                                                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `gitSemanticCommit.commitOptions` | Specifies which [arguments](https://git-scm.com/docs/git-commit#_options) to be passed when the commit is executed |
+| `gitSemanticCommit.preserveScope` | Determines whether to preserve the last message scope that was inserted                                            |
+| `gitSemanticCommit.stageAll`      | Determines whether to stage all changes before the commit, in case the staging area (index) is empty               |
+| `gitSemanticCommit.types`         | Specifies the supported message types                                                                              |
