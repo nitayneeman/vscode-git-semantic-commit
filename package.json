@@ -21,7 +21,7 @@
   "icon": "images/logo.png",
   "galleryBanner": {
     "color": "#eae9e1",
-    "theme": "dark"
+    "theme": "light"
   },
   "engines": {
     "vscode": "^1.39.0"
