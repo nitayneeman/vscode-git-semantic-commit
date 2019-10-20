@@ -79,6 +79,12 @@
       }
     ],
     "menus": {
+      "commandPalette": [
+        {
+          "command": "gitSemanticCommit.semanticCommit",
+          "when": "config.git.enabled && gitOpenRepositoryCount != 0"
+        }
+      ],
       "scm/title": [
         {
           "command": "gitSemanticCommit.semanticCommit",
@@ -88,7 +94,7 @@
         {
           "command": "gitSemanticCommit.semanticCommit",
           "when": "scmProvider == git",
-          "group": "inline"
+          "group": "4_commit"
         }
       ]
     }
