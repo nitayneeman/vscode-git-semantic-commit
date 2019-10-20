@@ -46,7 +46,7 @@ Then, choose the appropriate command and follow the steps.
 
 ### 2. View Actions
 
-Alternatively:
+Alternatively, you can use the primary and secondary actions within the Source Control view:
 
 <p align="center">
   <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/usage/view-actions.gif?raw=true" alt="Preview">
