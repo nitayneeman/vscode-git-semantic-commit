@@ -23,7 +23,7 @@
 This Visual Studio Code extension enables to commit simply by the semantic message conventions.
 
 <p align="center">
-  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/preview.gif?raw=true" alt="Preview">
+  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/examles/preview.gif?raw=true" alt="Preview">
 </p>
 
 <br>
@@ -39,7 +39,7 @@ Well, there are two ways to trigger the "Semantic Commit" command:
 Open the Command Palette and start typing `Git: Semantic Commit`:
 
 <p align="center">
-  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/usage/command-palette.gif?raw=true" alt="Preview">
+  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/examles/usage/command-palette.gif?raw=true" alt="Preview">
 </p>
 
 Then, choose the appropriate command and follow the steps.
@@ -49,7 +49,7 @@ Then, choose the appropriate command and follow the steps.
 Alternatively, you can use the primary and secondary actions within the Source Control view:
 
 <p align="center">
-  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/usage/view-actions.gif?raw=true" alt="Preview">
+  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/examles/usage/view-actions.gif?raw=true" alt="Preview">
 </p>
 
 <br>
