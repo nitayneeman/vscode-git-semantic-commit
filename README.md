@@ -27,3 +27,21 @@ This Visual Studio Code extension enables to commit simply by the semantic messa
 </p>
 
 <br>
+
+## 👨🏻‍🏫 How to Use
+
+The first thing you need to do is installing the [extension](https://marketplace.visualstudio.com/items?itemName=nitayneeman.git-semantic-commit).
+
+Well, there are two ways to trigger the "Semantic Commit" command:
+
+### 1. Command Palette
+
+Open the Command Palette and start typing `Git: Semantic Commit`:
+
+<p align="center">
+  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/usage/command-palette.gif?raw=true" alt="Preview">
+</p>
+
+Then, choose the appropriate command and follow the steps.
+
+<br>
