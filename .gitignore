@@ -4,3 +4,4 @@ test-temp
 out
 .vscode-test
 *.vsix
+.idea
