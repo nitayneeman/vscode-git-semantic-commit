@@ -104,21 +104,24 @@ export class SemanticCommitCommand extends Command {
   }
 
   private createQuickPickItems(): QuickPickItem[] {
+    const hasScope = this.hasScope();
     const typeItems = this.types.map(type => ({
       label: `$(git-commit) Commit with "${type}" type`,
       alwaysShow: true,
       actionType: ActionType.subject,
-      type
+      type,
+      description: ''
     }));
 
     return [
       {
-        label: this.hasScope()
-          ? `$(gist-new) Change the message scope (current: "${this.scope}")`
+        label: hasScope
+          ? `$(gist-new) Change the message scope`
           : `$(gist-new) Add a message scope`,
         alwaysShow: true,
         actionType: ActionType.scope,
-        type: ''
+        type: '',
+        description: hasScope ? `current: "${this.scope}"` : ''
       },
       ...typeItems
     ];
