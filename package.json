@@ -18,6 +18,11 @@
   "bugs": "https://github.com/nitayneeman/vscode-git-semantic-commit/issues",
   "displayName": "Git - Semantic Commit",
   "publisher": "nitayneeman",
+  "icon": "images/logo.png",
+  "galleryBanner": {
+    "color": "#eae9e1",
+    "theme": "dark"
+  },
   "engines": {
     "vscode": "^1.38.0"
   },
