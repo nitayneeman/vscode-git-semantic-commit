@@ -66,3 +66,7 @@ The extension allows you to customize the following configuration settings:
 | `gitSemanticCommit.types`         | Specifies the supported message types                                                                              |
 
 <br>
+
+## 💁🏻 Contributing
+
+This is an open source project. Any contribution would be greatly appreciated!
