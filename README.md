@@ -54,6 +54,8 @@ Alternatively, you can use the primary and secondary actions within the Source C
 
 <br>
 
+## ⚙️ Settings
+
 The extension allows you to customize the following configuration settings:
 
 | Name                              | Description                                                                                                        |
@@ -62,3 +64,5 @@ The extension allows you to customize the following configuration settings:
 | `gitSemanticCommit.preserveScope` | Determines whether to preserve the last message scope that was inserted                                            |
 | `gitSemanticCommit.stageAll`      | Determines whether to stage all changes before the commit, in case the staging area (index) is empty               |
 | `gitSemanticCommit.types`         | Specifies the supported message types                                                                              |
+
+<br>
