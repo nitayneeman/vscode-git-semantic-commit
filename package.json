@@ -29,6 +29,13 @@
   "categories": [
     "Other"
   ],
+  "badges": [
+    {
+      "description": "Build",
+      "url": "https://travis-ci.com/nitayneeman/vscode-git-semantic-commit.svg?token=vHfpxFNvotCsScqrpvMs&branch=master",
+      "href": "https://travis-ci.com/nitayneeman/vscode-git-semantic-commit"
+    }
+  ],
   "activationEvents": [
     "*"
   ],
