@@ -39,7 +39,7 @@ Well, there are two ways to trigger the "Semantic Commit" command:
 Open the Command Palette and start typing `Git: Semantic Commit`:
 
 <p align="center">
-  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/examples/usage/command-palette.gif?raw=true" alt="Preview">
+  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/examples/usage/command-palette.gif?raw=true" alt="Triggering using the Command Palette">
 </p>
 
 Then, choose the appropriate command and follow the steps.
@@ -49,7 +49,7 @@ Then, choose the appropriate command and follow the steps.
 Alternatively, you can use the primary and secondary actions within the Source Control view:
 
 <p align="center">
-  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/examples/usage/view-actions.gif?raw=true" alt="Preview">
+  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/examples/usage/view-actions.gif?raw=true" alt="Triggering using the View Actions">
 </p>
 
 <br>
@@ -64,6 +64,14 @@ The extension allows you to customize the following configuration settings:
 | `gitSemanticCommit.preserveScope` | Determines whether to preserve the last message scope that was inserted                                            |
 | `gitSemanticCommit.stageAll`      | Determines whether to stage all changes before the commit, in case the staging area (index) is empty               |
 | `gitSemanticCommit.types`         | Specifies the supported message types                                                                              |
+
+### Customize Your Types
+
+Besides the fact you can add new message types, it's either possible to modify the existing values:
+
+<p align="center">
+  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/examples/settings/types-with-emojis.png?raw=true" width="300" alt="Enriching types with Emojis">
+</p>
 
 <br>
 
