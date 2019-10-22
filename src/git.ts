@@ -9,9 +9,9 @@ export class Git {
   }
 
   static async add() {
-    const { stdout: hasStaged } = await this.status(['--porcelain', '--untracked-files=no']);
+    const { stdout: changes } = await this.diff(['--cached']);
 
-    if (!hasStaged) {
+    if (changes.length === 0) {
       return this.execute(getWorkspaceFolder(), 'add', [`--all`]);
     }
   }
@@ -24,7 +24,7 @@ export class Git {
     return exec(`git ${command} ${options.join(' ')}`, { cwd });
   }
 
-  private static async status(options: string[] = []) {
-    return this.execute(getWorkspaceFolder(), 'status', [...options]);
+  private static async diff(options: string[] = []) {
+    return this.execute(getWorkspaceFolder(), 'diff', [...options]);
   }
 }
