@@ -19,6 +19,12 @@ export async function createFile(directoryPath: string, content = '', extension 
   return filePath;
 }
 
+export async function editFile(filePath: string, content = '') {
+  fs.writeFileSync(filePath, content);
+
+  return filePath;
+}
+
 export async function getLastMessage(directoryPath: string) {
   return await Git.execute(directoryPath, 'log', ['-1', '--pretty=%B']);
 }

@@ -1,7 +1,7 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
 
-import { createFile, clearDirectory, getLastMessage } from './common';
+import { createFile, editFile, clearDirectory, getLastMessage } from './common';
 
 suite('Extension Test Suite', () => {
   const { workspaceFolders } = vscode.workspace;
@@ -35,6 +35,28 @@ suite('Extension Test Suite', () => {
     await vscode.commands.executeCommand('gitSemanticCommit.semanticCommit');
     await vscode.commands.executeCommand('editor.action.clipboardPasteAction');
     await vscode.commands.executeCommand('workbench.action.acceptSelectedQuickOpenItem');
+    await vscode.env.clipboard.writeText(sampleSubject);
+    await vscode.commands.executeCommand('editor.action.clipboardPasteAction');
+    await vscode.commands.executeCommand('workbench.action.quickOpenSelectNext');
+    await vscode.commands.executeCommand('workbench.action.acceptSelectedQuickOpenItem');
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    const { stdout: message } = await getLastMessage(directoryPath);
+
+    assert.equal(message.includes(expectedMessage), true);
+  });
+
+  test('should commit modified file with "chore" type', async () => {
+    const sampleSubject = 'add new file';
+    const expectedMessage = `chore: ${sampleSubject}`;
+
+    const filePath = await createFile(directoryPath, 'Hello World');
+    await vscode.env.clipboard.writeText(sampleSubject);
+    await vscode.commands.executeCommand('gitSemanticCommit.semanticCommit');
+    await vscode.commands.executeCommand('editor.action.clipboardPasteAction');
+    await vscode.commands.executeCommand('workbench.action.quickOpenSelectNext');
+    await vscode.commands.executeCommand('workbench.action.acceptSelectedQuickOpenItem');
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    await editFile(filePath, 'This is a change!');
     await vscode.env.clipboard.writeText(sampleSubject);
     await vscode.commands.executeCommand('editor.action.clipboardPasteAction');
     await vscode.commands.executeCommand('workbench.action.quickOpenSelectNext');
