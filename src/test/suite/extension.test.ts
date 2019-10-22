@@ -46,11 +46,11 @@ suite('Extension Test Suite', () => {
   });
 
   test('should commit modified file with "chore" type', async () => {
-    const sampleSubject = 'add new file';
+    const sampleSubject = 'change existing file';
     const expectedMessage = `chore: ${sampleSubject}`;
 
     const filePath = await createFile(directoryPath, 'Hello World');
-    await vscode.env.clipboard.writeText(sampleSubject);
+    await vscode.env.clipboard.writeText('add new file');
     await vscode.commands.executeCommand('gitSemanticCommit.semanticCommit');
     await vscode.commands.executeCommand('editor.action.clipboardPasteAction');
     await vscode.commands.executeCommand('workbench.action.quickOpenSelectNext');
