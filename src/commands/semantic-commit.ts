@@ -2,7 +2,7 @@ import { window, workspace, ExtensionContext, QuickPickItem } from 'vscode';
 
 import { getConfiguration, ConfigurationProperties } from '../config';
 import { Git } from '../git';
-import { workspaceStorageKey } from '../constants';
+import { workspaceStorageKey, scopeTemplatePlaceholder } from '../constants';
 import { Command } from './common';
 
 const enum ActionType {
@@ -75,6 +75,11 @@ export class SemanticCommitCommand extends Command {
     return getConfiguration()[ConfigurationProperties.stageAll];
   }
 
+  private get scopeTemplate() {
+    const template = getConfiguration()[ConfigurationProperties.scopeTemplate];
+    return template.length ? template : scopeTemplatePlaceholder;
+  }
+
   private hasScope() {
     return this.scope.length > 0;
   }
@@ -129,7 +134,9 @@ export class SemanticCommitCommand extends Command {
 
   private async performCommit(type: string, subject: string) {
     if (subject.length > 0) {
-      const message = `${type}${this.hasScope() ? `(${this.scope})` : ''}: ${subject}`;
+      const message = `${type}${this.hasScope() ?
+        this.scopeTemplate.replace(scopeTemplatePlaceholder, this.scope) : ''}:
+        ${subject}`;
 
       if (this.isStageAllEnabled()) {
         try {
