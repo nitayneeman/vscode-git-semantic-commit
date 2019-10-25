@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.0] - 2019-10-25
 
-## Added
+### Added
 
 - Add new option to change the scope template through a placeholder ([#610a3fc](https://github.com/nitayneeman/vscode-git-semantic-commit/commit/610a3fc9550b4a88fcea06741c3cd6602a2051d3)) - thanks to [@axelprox](https://github.com/axelprox) <p><img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/examples/settings/scope-template.gif?raw=true" width="600" alt="Changing the Scope Template"></p>
 
