@@ -67,7 +67,7 @@ The extension allows you to customize the following configuration settings:
 
 ### Customize Your Types
 
-Besides the fact you can add new message types, it's either possible to modify the existing values:
+Besides the fact you can add new message types, it's also possible to modify the existing values:
 
 <p align="center">
   <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/examples/settings/types-with-emojis.png?raw=true" width="600" alt="Enriching types with Emojis">
