@@ -2,4 +2,6 @@ const extensionIdentifier = 'gitSemanticCommit';
 
 const workspaceStorageKey = 'gitSemanticCommit';
 
-export { extensionIdentifier, workspaceStorageKey };
+const scopeTemplatePlaceholder = '$scope';
+
+export { extensionIdentifier, workspaceStorageKey, scopeTemplatePlaceholder };

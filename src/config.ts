@@ -8,6 +8,7 @@ enum ConfigurationProperties {
   commitOptions = 'commitOptions',
   preserveScope = 'preserveScope',
   stageAll = 'stageAll',
+  scopeTemplate = 'scopeTemplate',
   types = 'types'
 }
 
