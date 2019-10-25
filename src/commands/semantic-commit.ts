@@ -134,7 +134,10 @@ export class SemanticCommitCommand extends Command {
 
   private async performCommit(type: string, subject: string) {
     if (subject.length > 0) {
-      const message = `${type}${this.hasScope() ? this.scopeTemplate.replace(scopeTemplatePlaceholder, this.scope) : ''}: ${subject}`;
+      const scope = this.hasScope()
+        ? this.scopeTemplate.replace(scopeTemplatePlaceholder, this.scope)
+        : '';
+      const message = `${type}${scope}: ${subject}`;
 
       if (this.isStageAllEnabled()) {
         try {
