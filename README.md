@@ -62,6 +62,7 @@ The extension allows you to customize the following configuration settings:
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `gitSemanticCommit.commitOptions` | Specifies which [arguments](https://git-scm.com/docs/git-commit#_options) to be passed when the commit is executed |
 | `gitSemanticCommit.preserveScope` | Determines whether to preserve the last message scope that was inserted                                            |
+| `gitSemanticCommit.scopeTemplate` | Specifies scope template (`$scope` placeholder will be replaced with the passed scope)                             |
 | `gitSemanticCommit.stageAll`      | Determines whether to stage all changes before the commit, in case the staging area (index) is empty               |
 | `gitSemanticCommit.types`         | Specifies the supported message types                                                                              |
 
