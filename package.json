@@ -58,7 +58,7 @@
         "gitSemanticCommit.scopeTemplate": {
           "type": "string",
           "default": "($scope)",
-          "markdownDescription": "Specifies scope template (`$scope` placeholder will be replaced with the passed scope)"
+          "markdownDescription": "Specifies scope template (`$scope` placeholder will be replaced with the passed scope)."
         },
         "gitSemanticCommit.stageAll": {
           "type": "boolean",
