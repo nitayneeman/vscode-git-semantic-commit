@@ -50,15 +50,15 @@
           "default": "--quiet",
           "markdownDescription": "Specifies which [arguments](https://git-scm.com/docs/git-commit#_options) to be passed when the commit is executed."
         },
-        "gitSemanticCommit.scopeTemplate": {
-          "type": "string",
-          "default": "($scope)",
-          "markdownDescription": "Specifies scope template (`$scope` placeholder will be replaced with passed scope)"
-        },
         "gitSemanticCommit.preserveScope": {
           "type": "boolean",
           "default": false,
           "markdownDescription": "Determines whether to preserve the last message scope that was inserted."
+        },
+        "gitSemanticCommit.scopeTemplate": {
+          "type": "string",
+          "default": "($scope)",
+          "markdownDescription": "Specifies scope template (`$scope` placeholder will be replaced with the passed scope)"
         },
         "gitSemanticCommit.stageAll": {
           "type": "boolean",
