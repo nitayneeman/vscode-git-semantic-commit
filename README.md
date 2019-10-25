@@ -74,6 +74,14 @@ Besides the fact you can add new message types, it's also possible to modify the
   <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/examples/settings/types-with-emojis.png?raw=true" width="600" alt="Enriching types with Emojis">
 </p>
 
+### Customize Your Scope
+
+You can modify the scope template through a placeholder:
+
+<p align="center">
+  <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/examples/settings/scope-template.gif?raw=true" width="600" alt="Changing the Scope Template">
+</p>
+
 <br>
 
 ## 💁🏻 Contributing
