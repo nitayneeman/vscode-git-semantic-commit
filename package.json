@@ -58,7 +58,7 @@
         "gitSemanticCommit.scopeTemplate": {
           "type": "string",
           "default": "($scope)",
-          "markdownDescription": "Specifies scope template (`$scope` placeholder will be replaced with the passed scope)."
+          "markdownDescription": "Specifies scope template (`$scope` placeholder will be replaced with the passed scope). Check out [this](https://github.com/nitayneeman/vscode-git-semantic-commit#customize-your-scope) example."
         },
         "gitSemanticCommit.stageAll": {
           "type": "boolean",
@@ -81,7 +81,7 @@
           },
           "minItems": 1,
           "uniqueItems": true,
-          "markdownDescription": "Specifies the supported message types."
+          "markdownDescription": "Specifies the supported message types. Check out [this](https://github.com/nitayneeman/vscode-git-semantic-commit#customize-your-types) example."
         }
       }
     },
