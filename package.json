@@ -77,7 +77,8 @@
             "test"
           ],
           "items": {
-            "type": "string"
+            "type": ["string", "object"],
+            "description": "Can be either a string, or an object. If an object, use type for the commit type, and description to give a short description for the particular commit type."
           },
           "minItems": 1,
           "uniqueItems": true,
