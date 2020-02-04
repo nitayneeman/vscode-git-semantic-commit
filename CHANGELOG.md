@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Add new types with helpful descriptions <p><img src="https://raw.githubusercontent.com/nitayneeman/vscode-git-semantic-commit/master/images/examples/usage/types-with-descriptions.png" width="600" alt="Improving default types"></p>
+- Add new option to show description for types ([#de88ff6](https://github.com/nitayneeman/vscode-git-semantic-commit/commit/de88ff66cab1bc3788915aafc7b3756209f08dc2)) - thanks to [@balazsorban44](https://github.com/balazsorban44) <p><img src="https://user-images.githubusercontent.com/18369201/73666934-d8d9fe00-46a3-11ea-8206-eea54d72cc97.png" width="600" alt="Showing Descriptions for Types"></p>
+
 ## [1.1.0] - 2019-10-25
 
 ### Added
