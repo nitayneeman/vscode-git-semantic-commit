@@ -9,7 +9,7 @@ suite("Extension Test Suite", () => {
 
   suiteTeardown(() => clearDirectory(directoryPath));
 
-  test('should commit with "chore" type', async () => {
+  test('should commit with "build" type', async () => {
     const sampleSubject = "add new file";
     const expectedMessage = `build: ${sampleSubject}`;
 
@@ -29,7 +29,7 @@ suite("Extension Test Suite", () => {
     assert.equal(message.includes(expectedMessage), true);
   });
 
-  test('should commit with a scope and "chore" type', async () => {
+  test('should commit with a scope and "build" type', async () => {
     const sampleScope = "scope";
     const sampleSubject = "add new file";
     const expectedMessage = `build(${sampleScope}): ${sampleSubject}`;
