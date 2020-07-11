@@ -26,6 +26,8 @@ This Visual Studio Code extension enables to commit simply by the semantic messa
   <img src="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/images/examples/preview.gif?raw=true" alt="Preview">
 </p>
 
+Notice that the default types are aligned with the Angular commit message [conventions](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#type).
+
 <br>
 
 ## 👨🏻‍🏫 How to Use
