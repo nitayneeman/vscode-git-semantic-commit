@@ -103,10 +103,6 @@
             {
               "type": "test",
               "description": "Development changes related to tests"
-            },
-            {
-              "type": "chore",
-              "description": "Development changes related to scripts"
             }
           ],
           "items": {
