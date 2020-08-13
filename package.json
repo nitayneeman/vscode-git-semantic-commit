@@ -154,7 +154,7 @@
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && ./scripts/pretest.sh",
+    "pretest": "npm run compile && git init test-temp --quiet",
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
