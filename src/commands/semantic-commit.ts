@@ -8,6 +8,8 @@ import { Command } from "./common";
 const enum ActionType {
   scope = "scope",
   subject = "subject",
+  breakingChange = "breakingChange",
+  body = "body",
 }
 
 const scopeStorageKey = `${workspaceStorageKey}:scope`;
@@ -17,6 +19,8 @@ export class SemanticCommitCommand extends Command {
 
   context: ExtensionContext;
   scope: string;
+  body: string | false = false;
+  breakingChange: string | boolean = false;
   types: (string | { type: string; description: string })[];
 
   constructor(context: ExtensionContext) {
@@ -43,6 +47,8 @@ export class SemanticCommitCommand extends Command {
       if (!this.isPreserveScopeEnabled()) {
         this.scope = "";
       }
+      this.body = false;
+      this.breakingChange = false;
     });
 
     quickPick.onDidChangeSelection(async (items: any) => {
@@ -55,11 +61,28 @@ export class SemanticCommitCommand extends Command {
 
           quickPick.value = "";
           quickPick.items = this.createQuickPickItems();
+        } else if (actionType === ActionType.breakingChange) {
+          this.breakingChange =
+            quickPick.value.length > 0 ? quickPick.value : !this.breakingChange;
+
+          quickPick.value = "";
+          quickPick.items = this.createQuickPickItems();
+        } else if (actionType === ActionType.body) {
+          const wasEnabled = this.body !== false;
+          this.body = quickPick.value.length > 0 ? quickPick.value : false;
+
+          quickPick.value = "";
+
+          if (wasEnabled !== (this.body !== false)) {
+            quickPick.items = this.createQuickPickItems();
+          }
         } else {
           const [{ type }] = items;
           const subject = quickPick.value;
+          const body = this.body;
+          const breakingChange = this.breakingChange;
 
-          await this.performCommit(type, subject);
+          await this.performCommit(type, subject, body, breakingChange);
 
           quickPick.hide();
         }
@@ -102,7 +125,8 @@ export class SemanticCommitCommand extends Command {
     const quickPick = window.createQuickPick();
 
     quickPick.items = [...items];
-    quickPick.placeholder = "Type a value (scope or subject)";
+    quickPick.placeholder =
+      "Type a value (scope, subject, body or BREAKING CHANGE)";
     quickPick.ignoreFocusOut = true;
 
     return quickPick;
@@ -132,16 +156,54 @@ export class SemanticCommitCommand extends Command {
         type: "",
         description: hasScope ? `current: "${this.scope}"` : "",
       },
+      {
+        label:
+          this.body === false
+            ? `$(gist-new) Set body message`
+            : `$(sync) Unset/update body message`,
+        alwaysShow: true,
+        actionType: ActionType.body,
+        type: "",
+        description: this.body === false ? "" : `current: "${this.body}"`,
+      },
+      {
+        label:
+          this.breakingChange === false
+            ? `$(gist-new) Set BREAKING CHANGEs`
+            : `$(sync) Unset/Update BREAKING CHANGEs`,
+        alwaysShow: true,
+        actionType: ActionType.breakingChange,
+        type: "",
+        description:
+          this.breakingChange === false
+            ? ""
+            : `current: ${
+                this.breakingChange === true
+                  ? "enabled"
+                  : '"' + this.breakingChange + '"'
+              }`,
+      },
       ...typeItems,
     ];
   }
 
-  private async performCommit(type: string, subject: string) {
+  private async performCommit(
+    type: string,
+    subject: string,
+    body: string | false = false,
+    breakingChange: string | boolean = false
+  ) {
     if (subject.length > 0) {
       const scope = this.hasScope()
         ? this.scopeTemplate.replace(scopeTemplatePlaceholder, this.scope)
         : "";
-      const message = `${type}${scope}: ${subject}`;
+      const bodyMessage = body === false ? "" : `\n\n${body}`;
+      const breakFlag = breakingChange === true ? "!" : "";
+      const breakMessage =
+        typeof breakingChange === "string"
+          ? `\n\nBREAKING CHANGE: ${breakingChange}`
+          : "";
+      const message = `${type}${scope}${breakFlag}: ${subject}${bodyMessage}${breakMessage}`;
 
       if (this.isStageAllEnabled()) {
         try {
