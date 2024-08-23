@@ -1,23 +1,23 @@
-import { window, workspace, ExtensionContext, QuickPickItem } from 'vscode';
+import { window, workspace, ExtensionContext, QuickPickItem } from "vscode";
 
-import { getConfiguration, ConfigurationProperties } from '../config';
-import { Git } from '../git';
-import { workspaceStorageKey, scopeTemplatePlaceholder } from '../constants';
-import { Command } from './common';
+import { getConfiguration, ConfigurationProperties } from "../config";
+import { Git } from "../git";
+import { workspaceStorageKey, scopeTemplatePlaceholder } from "../constants";
+import { Command } from "./common";
 
 const enum ActionType {
-  scope = 'scope',
-  subject = 'subject'
+  scope = "scope",
+  subject = "subject",
 }
 
 const scopeStorageKey = `${workspaceStorageKey}:scope`;
 
 export class SemanticCommitCommand extends Command {
-  identifier = 'semanticCommit';
+  identifier = "semanticCommit";
 
   context: ExtensionContext;
   scope: string;
-  types: (string | {type: string, description: string})[];
+  types: (string | { type: string; description: string })[];
 
   constructor(context: ExtensionContext) {
     super();
@@ -41,7 +41,7 @@ export class SemanticCommitCommand extends Command {
 
     quickPick.onDidHide(() => {
       if (!this.isPreserveScopeEnabled()) {
-        this.scope = '';
+        this.scope = "";
       }
     });
 
@@ -53,7 +53,7 @@ export class SemanticCommitCommand extends Command {
           this.scope = quickPick.value;
           this.context.workspaceState.update(scopeStorageKey, this.scope);
 
-          quickPick.value = '';
+          quickPick.value = "";
           quickPick.items = this.createQuickPickItems();
         } else {
           const [{ type }] = items;
@@ -86,8 +86,8 @@ export class SemanticCommitCommand extends Command {
 
   private getScope() {
     return this.isPreserveScopeEnabled()
-      ? this.context.workspaceState.get(scopeStorageKey, '')
-      : '';
+      ? this.context.workspaceState.get(scopeStorageKey, "")
+      : "";
   }
 
   private getTypes() {
@@ -95,14 +95,14 @@ export class SemanticCommitCommand extends Command {
   }
 
   private getCommitOptions() {
-    return getConfiguration()[ConfigurationProperties.commitOptions].split(' ');
+    return getConfiguration()[ConfigurationProperties.commitOptions].split(" ");
   }
 
   private createQuickPick(items: QuickPickItem[]) {
     const quickPick = window.createQuickPick();
 
     quickPick.items = [...items];
-    quickPick.placeholder = 'Type a value (scope or subject)';
+    quickPick.placeholder = "Type a value (scope or subject)";
     quickPick.ignoreFocusOut = true;
 
     return quickPick;
@@ -110,16 +110,16 @@ export class SemanticCommitCommand extends Command {
 
   private createQuickPickItems(): QuickPickItem[] {
     const hasScope = this.hasScope();
-    const typeItems = this.types.map(item => {
-        const description = typeof item === "string" ? "" : item.description
-        const type = typeof item === "string" ? item : item.type
-        return ({
-          label: `$(git-commit) Commit with "${type}" type`,
-          alwaysShow: true,
-          actionType: ActionType.subject,
-          type,
-          description
-        })
+    const typeItems = this.types.map((item) => {
+      const description = typeof item === "string" ? "" : item.description;
+      const type = typeof item === "string" ? item : item.type;
+      return {
+        label: `$(git-commit) Commit with "${type}" type`,
+        alwaysShow: true,
+        actionType: ActionType.subject,
+        type,
+        description,
+      };
     });
 
     return [
@@ -129,10 +129,10 @@ export class SemanticCommitCommand extends Command {
           : `$(gist-new) Add a message scope`,
         alwaysShow: true,
         actionType: ActionType.scope,
-        type: '',
-        description: hasScope ? `current: "${this.scope}"` : ''
+        type: "",
+        description: hasScope ? `current: "${this.scope}"` : "",
       },
-      ...typeItems
+      ...typeItems,
     ];
   }
 
@@ -140,24 +140,26 @@ export class SemanticCommitCommand extends Command {
     if (subject.length > 0) {
       const scope = this.hasScope()
         ? this.scopeTemplate.replace(scopeTemplatePlaceholder, this.scope)
-        : '';
+        : "";
       const message = `${type}${scope}: ${subject}`;
 
       if (this.isStageAllEnabled()) {
         try {
           await Git.add();
-        } catch ({ message }) {
+        } catch (error) {
+          const { message } = error as Error;
           window.showErrorMessage(message);
         }
       }
 
       try {
         await Git.commit(message, this.getCommitOptions());
-      } catch ({ message }) {
+      } catch (error) {
+        const { message } = error as Error;
         window.showErrorMessage(message);
       }
     } else {
-      window.showErrorMessage('The message subject cannot be empty!');
+      window.showErrorMessage("The message subject cannot be empty!");
     }
   }
 }
