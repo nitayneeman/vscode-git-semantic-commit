@@ -149,7 +149,7 @@ export class SemanticCommitCommand extends Command {
     return [
       {
         label: hasScope
-          ? `$(gist-new) Change the message scope`
+          ? `$(sync) Change the message scope`
           : `$(gist-new) Add a message scope`,
         alwaysShow: true,
         actionType: ActionType.scope,
