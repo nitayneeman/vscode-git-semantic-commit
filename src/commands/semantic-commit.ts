@@ -107,7 +107,9 @@ export class SemanticCommitCommand extends Command {
   }
 
   private getScope() {
-    return this.isPreserveScopeEnabled() ? this.context.workspaceState.get(scopeStorageKey, '') : '';
+    return this.isPreserveScopeEnabled()
+      ? this.context.workspaceState.get(scopeStorageKey, '')
+      : '';
   }
 
   private getTypes() {
@@ -151,7 +153,10 @@ export class SemanticCommitCommand extends Command {
         description: hasScope ? `current: "${this.scope}"` : '',
       },
       {
-        label: this.body === false ? `$(gist-new) Set body message` : `$(sync) Unset/update body message`,
+        label:
+          this.body === false
+            ? `$(gist-new) Set body message`
+            : `$(sync) Unset/update body message`,
         alwaysShow: true,
         actionType: ActionType.body,
         type: '',
@@ -159,7 +164,9 @@ export class SemanticCommitCommand extends Command {
       },
       {
         label:
-          this.breakingChange === false ? `$(gist-new) Set BREAKING CHANGEs` : `$(sync) Unset/Update BREAKING CHANGEs`,
+          this.breakingChange === false
+            ? `$(gist-new) Set BREAKING CHANGEs`
+            : `$(sync) Unset/Update BREAKING CHANGEs`,
         alwaysShow: true,
         actionType: ActionType.breakingChange,
         type: '',
@@ -179,10 +186,13 @@ export class SemanticCommitCommand extends Command {
     breakingChange: string | boolean = false,
   ) {
     if (subject.length > 0) {
-      const scope = this.hasScope() ? this.scopeTemplate.replace(scopeTemplatePlaceholder, this.scope) : '';
+      const scope = this.hasScope()
+        ? this.scopeTemplate.replace(scopeTemplatePlaceholder, this.scope)
+        : '';
       const bodyMessage = body === false ? '' : `\n\n${body}`;
       const breakFlag = breakingChange === true ? '!' : '';
-      const breakMessage = typeof breakingChange === 'string' ? `\n\nBREAKING CHANGE: ${breakingChange}` : '';
+      const breakMessage =
+        typeof breakingChange === 'string' ? `\n\nBREAKING CHANGE: ${breakingChange}` : '';
       const message = `${type}${scope}${breakFlag}: ${subject}${bodyMessage}${breakMessage}`;
 
       if (this.isStageAllEnabled()) {
