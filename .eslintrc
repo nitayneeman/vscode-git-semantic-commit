@@ -1,0 +1,28 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+        "no-throw-literal": "warn",
+        "no-unused-expressions": "warn",
+        "no-redeclare": "warn",
+        "curly": [
+            "warn",
+            "all"
+        ],
+        "@typescript-eslint/class-name-casing": "warn",
+        "@typescript-eslint/semi": [
+            "warn",
+            "always"
+        ],
+        "eqeqeq": [
+            "warn",
+            "always"
+        ]
+    }
+}

@@ -158,6 +158,9 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.1.0",
+    "@typescript-eslint/parser": "^8.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "@types/glob": "^7.1.1",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.11.1",
