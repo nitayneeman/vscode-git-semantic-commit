@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add new option to set a body message for the commit
 - Add new option to set the `BREAKING CHANGE` flag after the type or add a `BREAKING CHANGE` footer
 
+### Changed
+
+- Changed the try-catch error handling to be compatible with current TypeScript version
+- ESLint configuration updated to the current version of ESLint and VSCode. All style settings have been adopted as far as possible.
+
 
 ## [2.0.0] - 2020-02-06
 
