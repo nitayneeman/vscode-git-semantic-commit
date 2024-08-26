@@ -6,13 +6,14 @@ import { SemanticCommitCommand } from './semantic-commit';
 const commandDefinitions = [SemanticCommitCommand];
 
 const createDisposables = (context: ExtensionContext): Disposable[] => {
-  return commandDefinitions.map(CommandDefinition => {
+  return commandDefinitions.map((CommandDefinition) => {
     const command = new CommandDefinition(context);
 
     return commands.registerCommand(`${extensionIdentifier}.${command.identifier}`, async () => {
       try {
         await command.execute();
-      } catch ({ message }) {
+      } catch (error) {
+        const { message } = error as Error;
         window.showErrorMessage(message);
       }
     });

@@ -17,7 +17,9 @@ export class Git {
   }
 
   static async commit(message: string, options: string[]) {
-    return this.execute(getWorkspaceFolder(), 'commit', [`--message="${message}"`, ...options]);
+    const messageOptions = message.split('\n').map((line) => `-m "${line}"`);
+
+    return this.execute(getWorkspaceFolder(), 'commit', [...messageOptions, ...options]);
   }
 
   static execute(cwd: string, command?: string, options: string[] = []) {
