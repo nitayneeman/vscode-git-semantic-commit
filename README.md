@@ -5,9 +5,9 @@
 <h1 align="center">VS Code - Git Semantic Commit</h1>
 
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=nitayneeman.git-semantic-commit"><img src="https://vsmarketplacebadges.dev/version/nitayneeman.git-semantic-commit.svg?label=Git%20-%20Semantic%20Commit&color=eae9e1" alt="Marketplace"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=nitayneeman.git-semantic-commit"><img src="https://img.shields.io/visual-studio-marketplace/v/nitayneeman.git-semantic-commit?label=Git%20-%20Semantic%20Commit&color=eae9e1" alt="Marketplace"></a>
   <a href="https://travis-ci.com/nitayneeman/vscode-git-semantic-commit"><img src="https://api.travis-ci.com/nitayneeman/vscode-git-semantic-commit.svg?token=vHfpxFNvotCsScqrpvMs&branch=master" alt="Build"></a>
-  <a href="https://marketplace.visualstudio.com/items?itemName=nitayneeman.git-semantic-commit"><img src="https://vsmarketplacebadges.dev/installs/nitayneeman.git-semantic-commit.svg?color=blue" alt="Installs"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=nitayneeman.git-semantic-commit"><img src="https://img.shields.io/visual-studio-marketplace/i/nitayneeman.git-semantic-commit?color=1E7FC0" alt="Installs"></a>
   <a href="https://github.com/nitayneeman/vscode-git-semantic-commit/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-lightgray.svg" alt="License"></a>
 </p>
 
